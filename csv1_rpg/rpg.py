@@ -10,12 +10,7 @@ playerNumber = 0
 #Lista de players
 playerNames = []
 
-
 def main()
-
-
-def intro()
-
     # introdução
     print("Olá! Vamos jogar um jogo?")
     
@@ -41,4 +36,3 @@ def intro()
                 playerNames.append(p)
                 break
     
-
