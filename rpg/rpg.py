@@ -1,7 +1,8 @@
 import random
 
-# RPG Supporting System
-
+#
+# RPG Game Play
+#
 
 # Variables:
 
@@ -13,12 +14,22 @@ playerNumber = 0
 playerNames = []
 # Game Cursor
 cursor = 0
+#Player's items
+items1 = []
+items2 = []
+items3 = []
+items4 = []
+items5 = []
+items6 = []
+
+# Player's Level
+level = []
 
     # Game
 def main():
 
     #Starting game
-    intro()
+#    intro()  
     menu()
 
 
@@ -114,7 +125,7 @@ def menuDice():
     if cursor == 1:
         sortingDice1() 
     elif cursor == 2:
-        sortingDice2() #pendente
+        sortingDice2()
     elif cursor == 3:
         menu() 
     else:
