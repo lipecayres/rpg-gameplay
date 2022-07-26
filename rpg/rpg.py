@@ -1,4 +1,3 @@
-from operator import index
 import random
 
 # RPG Supporting System
