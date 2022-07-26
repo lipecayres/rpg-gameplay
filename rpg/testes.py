@@ -1,2 +1,1 @@
-u = 2
-print("o texto é " + u)
+print("teste")
