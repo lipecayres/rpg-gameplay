@@ -15,7 +15,7 @@ playerNames = []
 # Game Cursor
 cursor = 0
 #Player's items
-items1 = []
+items = [[], [], [], [], [], []]
 items2 = []
 items3 = []
 items4 = []
@@ -40,7 +40,7 @@ def intro():
     print()
 
         # Defining game name
-    print("What is the game name we are playing? ")
+    print("What's the game name we are playing? ")
     game = input("Game name: ")
     print()
     print("Nice! So, let's play " + game)
@@ -76,7 +76,7 @@ def intro():
     
     print("All set! Let's start the game!")
     print()
-    counter = 0
+    counter = 1
     for player in playerNames:
         print(f"Player {counter}: {player}")
         counter +=1
@@ -88,17 +88,17 @@ def menu():
     print("--------------------------------")
     print("What do you want to do now?")
     print("1- Roll the dice ")
-    print("2- Add items")
-    print("3- Remove items")
+    print("2- Manage Items")
+    print("3- Magic and Special Powers")
     print("4- See players status")
-    print("5- End Game")
+    print("5- Game Options")
     print("--------------------------------")
     cursor = -1
     cursor = int(input("Choose a number: "))
     if cursor == 1:
-        menuDice() #Pendente
+        menuDice()
     elif cursor == 2:
-        itens() #pendente
+        items() #pendente
     elif cursor == 3:
         level() #pendente
     elif cursor == 4:
@@ -154,13 +154,57 @@ def sortingDice2():
 
     menuDice()
 
-def itens():
-    #Função para apresentar os itens cadastrados ao usuário
+def menuItems():
+    # This function show informations about player's items
+    
     print()
+    print("1- Add items ")
+    print("2- Remove items")
+    print("3- Return")
+
+    cursor = -1
+    cursor = int(input("Choose a number: "))
+    if cursor == 1:
+        print()
+        addItems() #pendente
+    elif cursor == 2:
+        print()
+        removeItems() #pendente
+    elif cursor == 3:
+        print()
+        menu()
+    else:
+        print()
+        print("Invalid entry. Try again")
+        print()        
+        menuItems()
 
     menu()
 
-def level():
+def addItems()
+    print()
+    print("Ok, Let's add some items. What player should we add an item?")
+    print(playerNames, end = " | ")
+    print()
+    addItemPlayer = input("Player: ")
+    if addItemPlayer in playerNames:
+           
+           # Asking the item name
+
+           print()
+           print("Which item are we adding?")
+           addItemName = input("Item name: ")
+           print()
+           print("Are you sure about the item name? (Yes/No): " + addItemName)
+           confirm = input("Confirm?: ")
+
+           # Adding item to player 
+
+           if confirm[0].lower() == 'y':
+            
+               items[playerNames.index()].append(addItemName)
+            
+           def level():
     #Função para mostrar o level dos usuários
     print()
     menu()
