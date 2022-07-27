@@ -19,8 +19,10 @@ inventory = [["Espada", "Escudo"], ["Runas", "Cajado"]]
 # Player's Level
 levelPlayer = [0, 0]
 
+#
+### MAIN GAME 
+#
 
-    # Game
 def main():
 
     #Starting game
@@ -46,7 +48,7 @@ def menu():
     elif cursor == 2:
         menuItems()
     elif cursor == 3:
-        level() #pendente
+        menuLevel() 
     elif cursor == 4:
         info() #pendente
     elif cursor == 5:
@@ -58,14 +60,8 @@ def menu():
         menu()
 
 
-
-
-
-def level():
-    #Função para mostrar o level dos usuários
-    print()
-    menu()
-
+    
+    
 def info():
     #função para mostrar as informações dos usuários ativos
     print()
@@ -75,6 +71,10 @@ def options():
     #Função para abrir opções do sistema
     print() 
     menu()
+
+
+##################################################
+##################################################
 
 ########### READY - INTRO GAME  ##################
 
@@ -104,7 +104,7 @@ def intro():
             print("Max 6 players. Try again.")
     print()
 
-        #Setting inventory and level of players    
+        #Setting inventory and menuLevel of players    
     for i in range(playerNumber):
         
         inventory.append([])
@@ -368,6 +368,172 @@ def removeItems():
         print("Player not found. What to do now?")
         print()
         menuItems()
+
+
+
+########## READY - MENU LEVEL  ####################
+
+def menuLevel():
+
+    #Function to show the level menu options to the user
+    print()
+    print(" ~~ All Player's Level: ")
+    print()
+    for player in playerNames:
+        print(f"Player: {player}")
+        print(f"Level: {levelPlayer[playerNames.index(player)]}")
+        print("-----------------------")   
+    print()
+    print("//////////////////////////")
+    print(" Level options")
+    print("1- Upgrade level ")
+    print("2- Decrease level")
+    print("3- Return")
+    print("//////////////////////////")
+    print()
+
+    cursor = -1
+    cursor = int(input("Choose a number: "))
+    if cursor == 1:
+        print()
+        addLevel() 
+
+    elif cursor == 2:
+        print()
+        removeLevel() 
+
+    elif cursor == 3:
+        print()
+        menu()
+    else:
+        print()
+        print("Invalid entry. Try again")
+        print()        
+        menuLevel()
+
+    menu()
+
+# Adding level to a player
+def addLevel():
+
+    print()
+    print("Nice! What player should we upgrade?")
+    print()
+    print(" ~~ Player's:")
+    for player in playerNames:
+        print("| " + player, end = " |")
+    print()
+    print()
+    player = input("Player name: ")
+    if player in playerNames:
+
+           # Adding level to a player 
+        
+        print()
+        print("==========================")
+        print("====== UPGRADE BOX =======")
+        print(f"Player: {player}")
+        print(f"Actual Level: {levelPlayer[playerNames.index(player)]}")
+        print("==========================")           
+
+            # Asking for the new level of the choosed player
+        while True:
+            newLevel = input("New level: ")
+            if (newLevel.isalpha()) == True:
+                print()
+                print("Insert a number!")
+                print()
+            else:
+                break
+        print()
+        print(f"Are you sure about the new level? (Yes/No): {newLevel}")
+        confirm = input("Confirm?: ")
+
+        if confirm[0].lower() == 'y':
+            print()
+            levelPlayer[playerNames.index(player)] = newLevel
+            
+            # Returning message: Level added ok!            
+            print("All set! What do you want to do now?")
+            menuLevel()
+        
+        else:
+            print()
+            print("Invalid entry. Try again!")
+            print()
+            menuLevel()
+
+    # Error message
+    else:
+        print()
+        print("Player not found. What to do now?")
+        print()
+        menuLevel()
+
+
+# Removing level from a player
+def removeLevel():
+
+    
+    print()
+    print("Ohh! What player should we decrease level?")
+    print()
+    print(" ~~ Player's:")
+    for player in playerNames:
+        print("| " + player, end = " |")
+    print()
+    print()
+    player = input("Player name: ")
+    if player in playerNames:
+
+           # Adding level to a player 
+
+        print("==========================")
+        print("====== DECREASE BOX =======")
+        print()
+        print(f"Player: {player}")
+        print(f"Actual Level: {levelPlayer[playerNames.index(player)]}")
+
+        print("==========================")           
+
+            # Asking for the new level of the choosed player
+        while True:
+            newLevel = input("New level: ")
+            if (newLevel.isalpha()) == True:
+                print()
+                print("Insert a number!")
+                print()
+            else:
+                break
+        print()
+        print(f"Are you sure about the new level? (Yes/No): {newLevel}")
+        confirm = input("Confirm?: ")
+
+        if confirm[0].lower() == 'y':
+            print()
+            levelPlayer[playerNames.index(player)] = newLevel
+            
+            # Returning message: Level added ok!            
+            print("All set! What do you want to do now?")
+            menuLevel()
+        
+        else:
+            print()
+            print("Invalid entry. Try again!")
+            print()
+            menuLevel()
+
+    # Error message
+    else:
+        print()
+        print("Player not found. What to do now?")
+        print()
+        menuLevel()    
+
+
+
+
+
 
 
 
