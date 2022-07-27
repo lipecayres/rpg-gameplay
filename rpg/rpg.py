@@ -11,29 +11,75 @@ game = ""
 #Player's Quantity
 playerNumber = 0   
 #Players Username
-playerNames = []
+playerNames = ["Felipe", "Ruan"]
 # Game Cursor
 cursor = 0
-#Player's items
-items = [[], [], [], [], [], []]
-items2 = []
-items3 = []
-items4 = []
-items5 = []
-items6 = []
-
+#Player's inventory
+inventory = [["Espada", "Escudo"], ["Runas", "Cajado"]]
 # Player's Level
-level = []
+levelPlayer = [0, 0]
+
 
     # Game
 def main():
 
     #Starting game
+
 #    intro()  
     menu()
 
 
+def menu():
+    
+    print("--------------------------------")
+    print("What do you want to do now?")
+    print("1- Roll the dice ")
+    print("2- Manage Items")
+    print("3- Level")
+    print("4- See players status")
+    print("5- Game Options")
+    print("--------------------------------")
+    cursor = -1
+    cursor = int(input("Choose a number: "))
+    if cursor == 1:
+        menuDice()
+    elif cursor == 2:
+        menuItems()
+    elif cursor == 3:
+        level() #pendente
+    elif cursor == 4:
+        info() #pendente
+    elif cursor == 5:
+        options() #pendente
+    else:
+        print()
+        print("Invalid entry. Try again")
+        print()        
+        menu()
+
+
+
+
+
+def level():
+    #Função para mostrar o level dos usuários
+    print()
+    menu()
+
+def info():
+    #função para mostrar as informações dos usuários ativos
+    print()
+    menu()
+
+def options():
+    #Função para abrir opções do sistema
+    print() 
+    menu()
+
+########### READY - INTRO GAME  ##################
+
     # Introduction
+
 def intro():
     print()
     print("Hi! Let's play a game?")
@@ -57,14 +103,21 @@ def intro():
         else:
             print("Max 6 players. Try again.")
     print()
+
+        #Setting inventory and level of players    
+    for i in range(playerNumber):
         
+        inventory.append([])
+        levelPlayer.append(0)
+
+
         # Defining players username
-    print("Time to ser the player's name!")
+    print("Time to set player's name!")
     print()
     counter = 0
     for player in range(playerNumber):
         while True:
-            print(f"How should we call player {counter+1}: ")
+            print(f"How should we call Player {counter+1}: ")
             p = input("Name: ")
             print()
             print("Are you sure about the name? (Yes/No): " + p)
@@ -83,33 +136,7 @@ def intro():
     print()
 
 
-def menu():
-    
-    print("--------------------------------")
-    print("What do you want to do now?")
-    print("1- Roll the dice ")
-    print("2- Manage Items")
-    print("3- Magic and Special Powers")
-    print("4- See players status")
-    print("5- Game Options")
-    print("--------------------------------")
-    cursor = -1
-    cursor = int(input("Choose a number: "))
-    if cursor == 1:
-        menuDice()
-    elif cursor == 2:
-        items() #pendente
-    elif cursor == 3:
-        level() #pendente
-    elif cursor == 4:
-        info() #pendente
-    elif cursor == 5:
-        options() #pendente
-    else:
-        print()
-        print("Invalid entry. Try again")
-        print()        
-        menu()
+############ READY - MENU DICE ###################
 
 def menuDice():
     print()
@@ -154,13 +181,22 @@ def sortingDice2():
 
     menuDice()
 
+
+########## READY - MENU MANAGE ITEMS  ####################
+
+# Menu : 2. Manage Items
+
 def menuItems():
-    # This function show informations about player's items
+    # This function show informations about player's inventory
     
     print()
-    print("1- Add items ")
-    print("2- Remove items")
+    print("//////////////////////////")
+    print(" Itens options")
+    print("1- Add inventory ")
+    print("2- Remove inventory")
     print("3- Return")
+    print("//////////////////////////")
+    print()
 
     cursor = -1
     cursor = int(input("Choose a number: "))
@@ -181,18 +217,29 @@ def menuItems():
 
     menu()
 
-def addItems()
+# Menu inventory: 2.1 Add inventory
+# Add inventory function
+
+def addItems():
     print()
-    print("Ok, Let's add some items. What player should we add an item?")
-    print(playerNames, end = " | ")
+    print("Ok, Let's add some inventory. What player should we add an item?")
     print()
-    addItemPlayer = input("Player: ")
-    if addItemPlayer in playerNames:
+    print("Player's")
+    for player in playerNames:
+        print("| " + player, end = " |")
+    print()
+    print()
+    player = input("Player name: ")
+    if player in playerNames:
            
            # Asking the item name
 
            print()
            print("Which item are we adding?")
+           for item in inventory[playerNames.index(player)]:
+               print("| " + item, end = " |")
+           print()
+           print()
            addItemName = input("Item name: ")
            print()
            print("Are you sure about the item name? (Yes/No): " + addItemName)
@@ -201,22 +248,127 @@ def addItems()
            # Adding item to player 
 
            if confirm[0].lower() == 'y':
-            
-               items[playerNames.index()].append(addItemName)
-            
-           def level():
-    #Função para mostrar o level dos usuários
-    print()
-    menu()
+               inventory[playerNames.index(player)].append(addItemName)
+               print("Item saved! What do you want to do now?")
+               print()
+               print(player + " complete inventory")
+               for item in inventory[playerNames.index(player)]:
+                   print("| " + item, end = " |")
+               print()
+               print()
+               print("1. Add another item")
+               print("2. Return")
+               cursor = -1
+               cursor = int(input("Choose a number: "))
+               if cursor == 1:
+                   addItems()
+               elif cursor == 2:
+                   menuItems()
+               else:
+                    print()
+                    print("Invalid entry! Try again.")
+                    print()
+                    addItems()
+           
+           elif confirm[0].lower() == "n":
+               print()
+               print("Item not added! ")
 
-def info():
-    #função para mostrar as informações dos usuários ativos
-    print()
-    menu()
+               menuItems()
 
-def options():
-    #Função para abrir opções do sistema
-    print() 
-    menu()
+           else:
+               print()
+               print("Invalid entry! Try again.")
+               print()
+               menuItems()    
+    else:
+        print()
+        print("Player not found. What to do now?")
+        print()
+        menuItems()
+
+
+# Menu inventory: 2.1 Remove inventory
+# Remove inventory function
+
+def removeItems():
+
+    print()
+    print("Ohh, OK! Time to remove inventory! What player should we remove an item?")
+    print()
+    print("Player's")
+    for player in playerNames:
+        print("| " + player, end = " |")
+    print()
+    print()
+    player = input("Player name: ")
+    if player in playerNames:
+           
+           # Asking the item name
+
+           print()
+           print("Which item are we removing?")
+           print()
+           print(player + " complete inventory")
+           for item in inventory[playerNames.index(player)]:
+               print("| " + item, end = " |")
+           print()
+           print()
+           removeItemName = input("Item name: ")
+           print()
+           print("Are you sure about the item name? (Yes/No): " + removeItemName)
+           confirm = input("Confirm?: ")
+
+           # Removing item to player 
+
+           if confirm[0].lower() == 'y':
+               if removeItemName in inventory[playerNames.index(player)]:
+                   inventory[playerNames.index(player)].remove(removeItemName)
+                   print()
+                   print("Item removed! What do you want to do now?")
+                   print()
+                   print(player + " complete inventory")
+                   for item in inventory[playerNames.index(player)]:
+                       print("| " + item, end = " |")
+                   print()
+                   print()
+                   print("1. Remove another item")
+                   print("2. Return")
+                   cursor = -1
+                   cursor = int(input("Choose a number: "))
+                   if cursor == 1:
+                       removeItems()
+                   elif cursor == 2:
+                       menuItems()
+                   else:
+                       print()
+                       print("Invalid entry! Try again.")
+                       print()
+                       menuItems()
+
+               else:
+                print()
+                print("Item does not exist at inventory.")
+                print()
+                removeItems()     
+           
+           elif confirm[0].lower() == "n":
+               print()
+               print("Item not removed! Try again. ")
+
+               menuItems()
+
+           else:
+               print()
+               print("Invalid entry! Try again.")
+               print()
+               menuItems()    
+    else:
+        print()
+        print("Player not found. What to do now?")
+        print()
+        menuItems()
+
+
 
 main()
