@@ -11,13 +11,13 @@ game = ""
 #Player's Quantity
 playerNumber = 0   
 #Players Username
-playerNames = ["Felipe", "Ruan"]
+playerNames = []
 # Game Cursor
 cursor = 0
 #Player's inventory
-inventory = [["Espada", "Escudo"], ["Runas", "Cajado"]]
+inventory = []
 # Player's Level
-levelPlayer = [0, 0]
+levelPlayer = []
 
 #
 ### MAIN GAME 
@@ -27,7 +27,7 @@ def main():
 
     #Starting game
 
-#    intro()  
+    intro()  
     menu()
 
 
@@ -50,7 +50,7 @@ def menu():
     elif cursor == 3:
         menuLevel() 
     elif cursor == 4:
-        info() #pendente
+        menuInfo() #pendente
     elif cursor == 5:
         options() #pendente
     else:
@@ -62,8 +62,25 @@ def menu():
 
     
     
-def info():
-    #função para mostrar as informações dos usuários ativos
+def menuInfo():
+    #Show all informations about players
+
+    print()
+    print("//////////////////////////")
+    print(" Player's Status")
+    print()
+    for player in playerNames:
+        print("-----------------------")  
+        print(f"Player: {player}")
+        print(f"Level: {levelPlayer[playerNames.index(player)]}")
+        print()
+        print(player + " inventory")
+        for item in inventory[playerNames.index(player)]:
+            print("| " + item, end = " |")
+        print()
+        print("-----------------------")  
+    print("//////////////////////////")
+    print()
     print()
     menu()
 
@@ -75,6 +92,8 @@ def options():
 
 ##################################################
 ##################################################
+##################################################
+
 
 ########### READY - INTRO GAME  ##################
 
@@ -135,6 +154,9 @@ def intro():
         counter +=1
     print()
 
+##################################################
+##################################################
+##################################################
 
 ############ READY - MENU DICE ###################
 
@@ -181,6 +203,9 @@ def sortingDice2():
 
     menuDice()
 
+##################################################
+##################################################
+##################################################
 
 ########## READY - MENU MANAGE ITEMS  ####################
 
@@ -202,10 +227,10 @@ def menuItems():
     cursor = int(input("Choose a number: "))
     if cursor == 1:
         print()
-        addItems() #pendente
+        addItems() 
     elif cursor == 2:
         print()
-        removeItems() #pendente
+        removeItems() 
     elif cursor == 3:
         print()
         menu()
@@ -215,7 +240,6 @@ def menuItems():
         print()        
         menuItems()
 
-    menu()
 
 # Menu inventory: 2.1 Add inventory
 # Add inventory function
@@ -369,7 +393,9 @@ def removeItems():
         print()
         menuItems()
 
-
+##################################################
+##################################################
+##################################################
 
 ########## READY - MENU LEVEL  ####################
 
@@ -410,8 +436,6 @@ def menuLevel():
         print("Invalid entry. Try again")
         print()        
         menuLevel()
-
-    menu()
 
 # Adding level to a player
 def addLevel():
