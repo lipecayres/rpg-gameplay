@@ -50,9 +50,9 @@ def menu():
     elif cursor == 3:
         menuLevel() 
     elif cursor == 4:
-        menuInfo() #pendente
+        menuStatus() #pendente
     elif cursor == 5:
-        options() #pendente
+        menuOptions() #pendente
     else:
         print()
         print("Invalid entry. Try again")
@@ -60,35 +60,48 @@ def menu():
         menu()
 
 
-    
-    
-def menuInfo():
-    #Show all informations about players
 
-    print()
-    print("//////////////////////////")
-    print(" Player's Status")
-    print()
-    for player in playerNames:
-        print("-----------------------")  
-        print(f"Player: {player}")
-        print(f"Level: {levelPlayer[playerNames.index(player)]}")
-        print()
-        print(player + " inventory")
-        for item in inventory[playerNames.index(player)]:
-            print("| " + item, end = " |")
-        print()
-        print("-----------------------")  
-    print("//////////////////////////")
-    print()
-    print()
-    menu()
-
-def options():
+def menuOptions():
     #Função para abrir opções do sistema
-    print() 
-    menu()
 
+
+    print("//////////////////////////")
+    print(" ~~ Game Options")
+    print()
+    print("1- Save Game ")
+    print("2- Load Game")
+    print("3- Reset Game")
+    print("4- Return")
+    print("//////////////////////////")
+    print()
+
+    cursor = -1
+    cursor = int(input("Choose a number: "))
+    if cursor == 1:
+        print()
+        saveGame() #pendente 
+
+    elif cursor == 2:
+        print()
+        loadGame() #pendente 
+
+    elif cursor == 3:
+        print()
+        resetGame() #pendente
+       
+
+    elif cursor == 4:
+        print()
+        menuOptions()
+
+    else:
+        print()
+        print("Invalid entry. Try again")
+        print()        
+        menuOptions()
+
+    
+    
 
 ##################################################
 ##################################################
@@ -216,7 +229,7 @@ def menuItems():
     
     print()
     print("//////////////////////////")
-    print(" Itens options")
+    print(" Itens menuOptions")
     print("1- Add inventory ")
     print("2- Remove inventory")
     print("3- Return")
@@ -401,7 +414,7 @@ def removeItems():
 
 def menuLevel():
 
-    #Function to show the level menu options to the user
+    #Function to show the level menu menuOptions to the user
     print()
     print(" ~~ All Player's Level: ")
     print()
@@ -411,7 +424,7 @@ def menuLevel():
         print("-----------------------")   
     print()
     print("//////////////////////////")
-    print(" Level options")
+    print(" Level Options")
     print("1- Upgrade level ")
     print("2- Decrease level")
     print("3- Return")
@@ -555,6 +568,35 @@ def removeLevel():
         menuLevel()    
 
 
+##################################################
+##################################################
+##################################################
+
+
+####### READY - MENU STATUS PLAYER  ##############
+    
+    
+def menuStatus():
+    #Show all informations about players
+
+    print()
+    print("//////////////////////////")
+    print(" Player's Status")
+    print()
+    for player in playerNames:
+        print("-----------------------")  
+        print(f"Player: {player}")
+        print(f"Level: {levelPlayer[playerNames.index(player)]}")
+        print()
+        print(player + " inventory")
+        for item in inventory[playerNames.index(player)]:
+            print("| " + item, end = " |")
+        print()
+        print("-----------------------")  
+    print("//////////////////////////")
+    print()
+    print()
+    menu()
 
 
 
