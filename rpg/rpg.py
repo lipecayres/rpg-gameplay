@@ -27,7 +27,7 @@ def main():
 
     #Starting game
 
-    intro()  
+ #   intro()  
     menu()
 
 
@@ -42,7 +42,15 @@ def menu():
     print("5- Game Options")
     print("--------------------------------")
     cursor = -1
-    cursor = int(input("Choose a number: "))
+    while True:
+        cursor = input("Choose a number: ")
+        if (cursor.isalpha()) == True:
+            print()
+            print("Invalid entry. Try again!")
+            print()
+        else:
+            break
+ 
     if cursor == 1:
         menuDice()
     elif cursor == 2:
@@ -62,7 +70,7 @@ def menu():
 
 
 def menuOptions():
-    #Função para abrir opções do sistema
+    #Função para abrir opções do sistema  
 
 
     print("//////////////////////////")
