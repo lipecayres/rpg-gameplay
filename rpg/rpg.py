@@ -467,7 +467,7 @@ def removeItems():
            print()
            print()
            removeItemName = input("Item name: ")
-           print()
+           print() 
            print("Are you sure about the item name? (Yes/No): " + removeItemName)
            confirm = input("Confirm?: ")
 
