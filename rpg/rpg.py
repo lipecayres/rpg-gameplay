@@ -1,4 +1,5 @@
 import random
+import csv
 
 #
 # RPG Game Play
@@ -12,8 +13,6 @@ game = ""
 playerNumber = 0   
 #Players Username
 playerNames = []
-# Game Cursor
-cursor = 0
 #Player's inventory
 inventory = []
 # Player's Level
@@ -27,7 +26,7 @@ def main():
 
     #Starting game
 
- #   intro()  
+#    intro()  
     menu()
 
 
@@ -41,16 +40,18 @@ def menu():
     print("4- See players status")
     print("5- Game Options")
     print("--------------------------------")
+    
     cursor = -1
     while True:
         cursor = input("Choose a number: ")
-        if (cursor.isalpha()) == True:
-            print()
-            print("Invalid entry. Try again!")
-            print()
-        else:
+        if cursor.isdigit():
+            cursor = int(cursor)
             break
- 
+        else:
+            print()
+            print("Insert a number!")
+            print()
+
     if cursor == 1:
         menuDice()
     elif cursor == 2:
@@ -84,7 +85,16 @@ def menuOptions():
     print()
 
     cursor = -1
-    cursor = int(input("Choose a number: "))
+    while True:
+        cursor = input("Choose a number: ")
+        if cursor.isdigit():
+            cursor = int(cursor)
+            break
+        else:
+            print()
+            print("Insert a number!")
+            print()
+ 
     if cursor == 1:
         print()
         saveGame() #pendente 
@@ -97,10 +107,9 @@ def menuOptions():
         print()
         resetGame() #pendente
        
-
     elif cursor == 4:
         print()
-        menuOptions()
+        menu()
 
     else:
         print()
@@ -108,8 +117,68 @@ def menuOptions():
         print()        
         menuOptions()
 
-    
-    
+def saveGame():
+
+    print("ATTENTION! Same name -> Overwrite!")
+    savefile = input("FILE NAME: ")
+    with open(savefile + ".csv", "w") as file:
+        writer = csv.writer(file)
+        writer.writerow([game,playerNumber, playerNames, inventory, levelPlayer])
+
+    print("Game saved as:  " + savefile)
+    menuOptions()
+
+def loadGame():
+   
+    global load    
+    load = []
+
+    print("Let's load your game!")
+    loading = input("FILE NAME: ")     
+    with open(loading + ".csv", "r") as file:
+        reader = csv.reader(file)
+        for row in reader:
+            load.append(row)
+
+    global game 
+    global playerNumber
+    global playerNames
+    global inventory 
+    global levelPlayer
+
+    game = load[0][0]
+    playerNumber = load[0][1]
+    playerNames = load[0][2]
+    inventory = load[0][3]
+    levelPlayer = load[0][4]
+
+    print()
+    print("###########################")
+    print("GAME " + loading + " LOADED!")
+    print("###########################")
+    print()
+    menu()
+
+def resetGame():
+    print("Are you sure about it?")
+    print("All your progress will be loss")    
+    print()
+    confirm = input("Confirm? (Yes/No): ")
+    if confirm[0].lower() == 'y':
+        game = ""  
+        playerNumber = 0   
+        playerNames = []
+        inventory = []
+        levelPlayer = []
+
+        main()
+
+    else:
+        print()
+        print("Invalid entry. Try again!")
+        print()
+        menuOptions()
+
 
 ##################################################
 ##################################################
@@ -133,9 +202,22 @@ def intro():
     print()
 
         # Defining Players Quantity 
+
+
     while True:
         print("How many players are playing? (Max: 6)")
-        playerNumber = int(input("Quantity: "))
+        
+        playerNumber = -1
+        while True:
+            playerNumber = input("Quantity: ")
+            if playerNumber.isdigit():
+                playerNumber = int(playerNumber)
+                break
+            else:
+                print()
+                print("Insert a number!")
+                print()
+
         if playerNumber > 0 and playerNumber <= 6:
             break
         elif playerNumber < 0:
@@ -189,9 +271,17 @@ def menuDice():
     print("2- Two dices")
     print("3- Return")
     print("--------------------------------")
-    
-    cursor = -1
-    cursor = int(input("Choose a number: "))
+
+    while True:
+        cursor = input("Choose a number: ")
+        if cursor.isdigit():
+            cursor = int(cursor)
+            break
+        else:
+            print()
+            print("Insert a number!")
+            print()
+ 
     if cursor == 1:
         sortingDice1() 
     elif cursor == 2:
@@ -244,8 +334,16 @@ def menuItems():
     print("//////////////////////////")
     print()
 
-    cursor = -1
-    cursor = int(input("Choose a number: "))
+    while True:
+        cursor = input("Choose a number: ")
+        if cursor.isdigit():
+            cursor = int(cursor)
+            break
+        else:
+            print()
+            print("Insert a number!")
+            print()
+
     if cursor == 1:
         print()
         addItems() 
@@ -303,8 +401,17 @@ def addItems():
                print()
                print("1. Add another item")
                print("2. Return")
-               cursor = -1
-               cursor = int(input("Choose a number: "))
+
+               while True:
+                   cursor = input("Choose a number: ")
+                   if cursor.isdigit():
+                       cursor = int(cursor)
+                       break
+                   else:
+                       print()
+                       print("Insert a number!")
+                       print()
+
                if cursor == 1:
                    addItems()
                elif cursor == 2:
@@ -379,8 +486,17 @@ def removeItems():
                    print()
                    print("1. Remove another item")
                    print("2. Return")
-                   cursor = -1
-                   cursor = int(input("Choose a number: "))
+
+                   while True:
+                       cursor = input("Choose a number: ")
+                       if cursor.isdigit():
+                           cursor = int(cursor)
+                           break
+                       else:
+                           print()
+                           print("Insert a number!")
+                           print()
+        
                    if cursor == 1:
                        removeItems()
                    elif cursor == 2:
@@ -439,8 +555,16 @@ def menuLevel():
     print("//////////////////////////")
     print()
 
-    cursor = -1
-    cursor = int(input("Choose a number: "))
+    while True:
+        cursor = input("Choose a number: ")
+        if cursor.isdigit():
+            cursor = int(cursor)
+            break
+        else:
+            print()
+            print("Insert a number!")
+            print()
+    
     if cursor == 1:
         print()
         addLevel() 
@@ -482,14 +606,17 @@ def addLevel():
         print("==========================")           
 
             # Asking for the new level of the choosed player
+     
         while True:
             newLevel = input("New level: ")
-            if (newLevel.isalpha()) == True:
+            if newLevel.isdigit():
+                newLevel = int(newLevel)
+                break
+            else:
                 print()
                 print("Insert a number!")
                 print()
-            else:
-                break
+ 
         print()
         print(f"Are you sure about the new level? (Yes/No): {newLevel}")
         confirm = input("Confirm?: ")
@@ -542,14 +669,18 @@ def removeLevel():
         print("==========================")           
 
             # Asking for the new level of the choosed player
+ 
         while True:
-            newLevel = input("New level: ")
-            if (newLevel.isalpha()) == True:
-                print()
-                print("Insert a number!")
-                print()
-            else:
-                break
+           newLevel = input("New level: ")
+           if newLevel.isdigit():
+               newLevel = int(newLevel)
+               break
+               
+           else:
+               print()
+               print("Insert a number!")
+               print()
+
         print()
         print(f"Are you sure about the new level? (Yes/No): {newLevel}")
         confirm = input("Confirm?: ")
