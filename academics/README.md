@@ -1,2 +1,0 @@
-# academics
-academics codes
