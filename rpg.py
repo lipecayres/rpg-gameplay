@@ -37,7 +37,11 @@ def main():
 
 
 def menu():
-    
+
+    print()
+    print("################################")
+    print()
+    print()
     print("--------------------------------")
     print("What do you want to do now?")
     print("1- Roll the dice ")
@@ -46,6 +50,9 @@ def menu():
     print("4- See players status")
     print("5- Game Options")
     print("--------------------------------")
+    print()
+    print("################################")
+    print()
     
     cursor = -1
     while True:
@@ -104,9 +111,15 @@ def opening():
     # Introduction
 
 def intro():
+
+    print()
+    print("################################")
     print()
     print("Hi! Let's play a game?")
     print()
+    print("################################")
+    print()
+
 
         # Defining game name
     print("What's the game name we are playing? ")
