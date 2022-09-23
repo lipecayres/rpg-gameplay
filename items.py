@@ -9,7 +9,7 @@ def menuItems():
     
     print()
     print("//////////////////////////")
-    print(" Itens menuOptions")
+    print(" Itens Options")
     print("1- Add inventory ")
     print("2- Remove inventory")
     print("3- Return")
@@ -50,18 +50,18 @@ def addItems():
     print("Ok, Let's add some inventory. What player should we add an item?")
     print()
     print("Player's")
-    for player in playerNames:
+    for player in intro.playerNames:
         print("| " + player, end = " |")
     print()
     print()
     player = input("Player name: ")
-    if player in playerNames:
+    if player in intro.playerNames:
            
            # Asking the item name
 
            print()
            print("Which item are we adding?")
-           for item in inventory[playerNames.index(player)]:
+           for item in intro.inventory[intro.playerNames.index(player)]:
                print("| " + item, end = " |")
            print()
            print()
@@ -73,11 +73,11 @@ def addItems():
            # Adding item to player 
 
            if confirm[0].lower() == 'y':
-               inventory[playerNames.index(player)].append(addItemName)
+               intro.inventory[intro.playerNames.index(player)].append(addItemName)
                print("Item saved! What do you want to do now?")
                print()
                print(player + " complete inventory")
-               for item in inventory[playerNames.index(player)]:
+               for item in intro.inventory[intro.playerNames.index(player)]:
                    print("| " + item, end = " |")
                print()
                print()
@@ -131,12 +131,12 @@ def removeItems():
     print("Ohh, OK! Time to remove inventory! What player should we remove an item?")
     print()
     print("Player's")
-    for player in playerNames:
+    for player in intro.playerNames:
         print("| " + player, end = " |")
     print()
     print()
     player = input("Player name: ")
-    if player in playerNames:
+    if player in intro.playerNames:
            
            # Asking the item name
 
@@ -144,7 +144,7 @@ def removeItems():
            print("Which item are we removing?")
            print()
            print(player + " complete inventory")
-           for item in inventory[playerNames.index(player)]:
+           for item in intro.inventory[intro.playerNames.index(player)]:
                print("| " + item, end = " |")
            print()
            print()
@@ -156,13 +156,13 @@ def removeItems():
            # Removing item to player 
 
            if confirm[0].lower() == 'y':
-               if removeItemName in inventory[playerNames.index(player)]:
-                   inventory[playerNames.index(player)].remove(removeItemName)
+               if removeItemName in intro.inventory[intro.playerNames.index(player)]:
+                   intro.inventory[intro.playerNames.index(player)].remove(removeItemName)
                    print()
                    print("Item removed! What do you want to do now?")
                    print()
                    print(player + " complete inventory")
-                   for item in inventory[playerNames.index(player)]:
+                   for item in intro.inventory[intro.playerNames.index(player)]:
                        print("| " + item, end = " |")
                    print()
                    print()

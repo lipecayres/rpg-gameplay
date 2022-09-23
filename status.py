@@ -13,10 +13,10 @@ def menuStatus():
     for player in intro.playerNames:
         print("-----------------------")  
         print(f"Player: {player}")
-        print(f"Level: {intro.levelPlayer[playerNames.index(player)]}")
+        print(f"Level: {intro.levelPlayer[intro.playerNames.index(player)]}")
         print()
         print(player + " inventory")
-        for item in intro.inventory[playerNames.index(player)]:
+        for item in intro.inventory[intro.playerNames.index(player)]:
             print("| " + item, end = " |")
         print()
         print("-----------------------")  

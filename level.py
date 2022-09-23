@@ -12,7 +12,7 @@ def menuLevel():
     print()
     for player in intro.playerNames:
         print(f"Player: {player}")
-        print(f"Level: {intro.levelPlayer[playerNames.index(player)]}")
+        print(f"Level: {intro.levelPlayer[intro.playerNames.index(player)]}")
         print("-----------------------")   
     print()
     print("//////////////////////////")
@@ -70,7 +70,7 @@ def addLevel():
         print("==========================")
         print("====== UPGRADE BOX =======")
         print(f"Player: {player}")
-        print(f"Actual Level: {intro.levelPlayer[playerNames.index(player)]}")
+        print(f"Actual Level: {intro.levelPlayer[intro.playerNames.index(player)]}")
         print("==========================")           
 
             # Asking for the new level of the choosed player
@@ -91,7 +91,7 @@ def addLevel():
 
         if confirm[0].lower() == 'y':
             print()
-            intro.levelPlayer[playerNames.index(player)] = newLevel
+            intro.levelPlayer[intro.playerNames.index(player)] = newLevel
             
             # Returning message: Level added ok!            
             print("All set! What do you want to do now?")
@@ -132,7 +132,7 @@ def removeLevel():
         print("====== DECREASE BOX =======")
         print()
         print(f"Player: {player}")
-        print(f"Actual Level: {intro.levelPlayer[playerNames.index(player)]}")
+        print(f"Actual Level: {intro.levelPlayer[intro.playerNames.index(player)]}")
 
         print("==========================")           
 
@@ -155,7 +155,7 @@ def removeLevel():
 
         if confirm[0].lower() == 'y':
             print()
-            intro.levelPlayer[playerNames.index(player)] = newLevel
+            intro.levelPlayer[intro.playerNames.index(player)] = newLevel
             
             # Returning message: Level added ok!            
             print("All set! What do you want to do now?")
