@@ -38,16 +38,7 @@ def menu():
     print("################################")
     print()
     
-    cursor = -1
-    while True:
-        cursor = input("Choose a number: ")
-        if cursor.isdigit():
-            cursor = int(cursor)
-            break
-        else:
-            print()
-            print("Insert a number!")
-            print()
+    cursor = intEntry()
 
     if cursor == 1:
         dice.menuDice()
@@ -114,16 +105,7 @@ def intro():
     while True:
         print("How many players are playing? (Max: 6)")
         
-        playerNumber = -1
-        while True:
-            playerNumber = input("Quantity: ")
-            if playerNumber.isdigit():
-                playerNumber = int(playerNumber)
-                break
-            else:
-                print()
-                print("Insert a number!")
-                print()
+        playerNumber = intEntry()
 
         if playerNumber > 0 and playerNumber <= 6:
             break
@@ -163,3 +145,15 @@ def intro():
         print(f"Player {counter}: {player}")
         counter +=1
     print()
+
+
+def intEntry():
+    while True:
+        n = input("Number: ")    
+        try:
+            n = int(n)
+            break
+        except ValueError:
+            print()
+            print("Please insert a number!")
+    return n
