@@ -19,11 +19,6 @@ inventory = []
 # Player's Level
 levelPlayer = []
 
-def start():
-    opening()
-    intro()
-    menu()
-
 
 def menu():
 
@@ -168,5 +163,3 @@ def intro():
         print(f"Player {counter}: {player}")
         counter +=1
     print()
-
-start()
