@@ -13,16 +13,8 @@ def menuDice():
     print("3- Return")
     print("--------------------------------")
 
-    while True:
-        cursor = input("Choose a number: ")
-        if cursor.isdigit():
-            cursor = int(cursor)
-            break
-        else:
-            print()
-            print("Insert a number!")
-            print()
- 
+
+    cursor = intro.intEntry()
     if cursor == 1:
         sortingDice1() 
     elif cursor == 2:
